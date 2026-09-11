@@ -1,0 +1,17 @@
+[
+  {
+    "question": "How many customers are in the database?"
+  },
+  {
+    "question": "What is the total revenue from completed orders?"
+  },
+  {
+    "question": "Which product generated the most revenue?"
+  },
+  {
+    "question": "Show revenue by country."
+  },
+  {
+    "question": "Which customer spent the most money?"
+  }
+]
