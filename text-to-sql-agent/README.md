@@ -1,65 +1,9 @@
-# 🧠 Autonomous "Text-to-SQL" Agent
+#  task 10 :Autonomous "Text-to-SQL" Agent
 
 An industry-style AI agent that converts natural-language business questions into read-only SQLite queries, executes them, automatically repairs failed SQL, analyzes results, and optionally creates charts.
 
-## Architecture
-
-```text
-                         ┌───────────────────┐
-                         │       User        │
-                         └─────────┬─────────┘
-                                   │
-                                   ▼
-                         ┌───────────────────┐
-                         │    Streamlit UI   │
-                         └─────────┬─────────┘
-                                   │
-                                   ▼
-                         ┌───────────────────┐
-                         │     LangGraph     │
-                         │   Agent Workflow  │
-                         └─────────┬─────────┘
-                                   │
-                    ┌──────────────┼──────────────┐
-                    ▼              ▼              ▼
-              Schema Agent    SQL Generator   Security
-                    │              │              │
-                    └──────────────┼──────────────┘
-                                   ▼
-                         ┌───────────────────┐
-                         │  Read-only SQL    │
-                         │     Executor      │
-                         └─────────┬─────────┘
-                                   │
-                         SQL error?│
-                         ┌─────────┴─────────┐
-                         │                   │
-                        YES                  NO
-                         │                   │
-                         ▼                   ▼
-                ┌────────────────┐   ┌────────────────┐
-                │ Self-Correction│   │ Result Analyzer│
-                │  max 3 retries │   │  + Chart Tool  │
-                └───────┬────────┘   └───────┬────────┘
-                        │                    │
-                        └──────► Execute ◄───┘
-                                             │
-                                             ▼
-                                  Answer + SQL + Data
-                                      + Optional Chart
 
 
-                 ┌────────────────────────────────┐
-                 │          MLOps Layer           │
-                 ├────────────────────────────────┤
-                 │ uv + uv.lock                   │
-                 │ pytest + Ruff                   │
-                 │ GitHub Actions CI               │
-                 │ Docker                          │
-                 │ GitHub Container Registry       │
-                 │ CD / deployment hook            │
-                 └────────────────────────────────┘
-```
 
 ## Stack
 
@@ -302,37 +246,3 @@ autonomous-text-to-sql-agent/
 └── README.md
 ```
 
-## MLOps checklist
-
-- [x] Reproducible dependencies with uv
-- [x] Locked dependency file
-- [x] Environment configuration
-- [x] Automated tests
-- [x] Ruff quality gates
-- [x] Evaluation dataset
-- [x] Read-only database
-- [x] SQL validation
-- [x] Self-correction
-- [x] Retry limits
-- [x] Agent execution trace
-- [x] Streamlit UI
-- [x] Docker image
-- [x] Docker Compose
-- [x] GitHub Actions CI
-- [x] GitHub Actions CD
-- [x] Container Registry publishing
-
-## Production upgrades
-
-For a stronger production deployment, add:
-
-1. LangSmith tracing
-2. Docker image scanning
-3. Dependabot
-4. Secret management
-5. Authentication / authorization
-6. SQL AST validation
-7. Query timeout and result-size limits
-8. Prometheus/Grafana metrics
-9. Larger golden evaluation set
-10. Deployment to AWS / Azure / GCP / Render / Railway
