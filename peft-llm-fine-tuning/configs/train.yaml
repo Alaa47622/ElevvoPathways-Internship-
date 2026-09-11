@@ -1,0 +1,53 @@
+model:
+  name: microsoft/phi-2
+  trust_remote_code: true
+
+dataset:
+  name: knkarthick/samsum
+  train_split: train
+  eval_split: validation
+  test_split: test
+
+training:
+  output_dir: artifacts/adapters/phi2-samsum
+  num_train_epochs: 2
+  learning_rate: 0.0002
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 8
+  max_seq_length: 512
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  logging_steps: 10
+  eval_steps: 100
+  save_steps: 100
+  save_total_limit: 2
+  gradient_checkpointing: true
+  fp16: true
+  bf16: false
+  seed: 42
+
+qlora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - dense
+
+quantization:
+  load_in_4bit: true
+  quant_type: nf4
+  use_double_quant: true
+  compute_dtype: float16
+
+generation:
+  max_new_tokens: 96
+  temperature: 0.2
+  top_p: 0.9
+
+mlflow:
+  tracking_uri: mlruns
+  experiment_name: samsum-qlora

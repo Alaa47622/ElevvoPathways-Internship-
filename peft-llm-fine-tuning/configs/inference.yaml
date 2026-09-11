@@ -1,0 +1,9 @@
+model:
+  name: microsoft/phi-2
+  adapter_path: artifacts/adapters/phi2-samsum
+  merged_path: artifacts/merged_model
+
+generation:
+  max_new_tokens: 96
+  temperature: 0.2
+  top_p: 0.9

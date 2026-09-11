@@ -1,0 +1,36 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.env
+
+# Hugging Face / model caches
+.cache/
+.huggingface/
+huggingface/
+transformers/
+
+# Generated ML artifacts
+artifacts/*
+!artifacts/.gitkeep
+
+mlruns/*
+!mlruns/.gitkeep
+
+# Large model files
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Local data
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# IDE
+.vscode/
+.idea/
