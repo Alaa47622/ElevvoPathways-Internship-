@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.git/
+.gitignore
+outputs/
+data/processed/
+notebooks/.ipynb_checkpoints/
+.DS_Store
