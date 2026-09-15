@@ -235,21 +235,4 @@ Docker
  └── Application + runtime/container environment
 ```
 
-## 12. Learning path
 
-Do not try to memorize the whole repository.
-
-Work through it in this order:
-
-1. `main.py`
-2. `data_loader.py`
-3. `preprocessing.py`
-4. `vectorization.py`
-5. `lda_model.py`
-6. `nmf_model.py`
-7. `evaluation.py`
-8. `visualization.py`
-9. `pyproject.toml`
-10. `Dockerfile`
-
-The goal is to understand why each layer exists, then modify it yourself.
