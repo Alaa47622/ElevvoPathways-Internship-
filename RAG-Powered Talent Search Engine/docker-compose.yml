@@ -1,0 +1,41 @@
+services:
+  api:
+    build: .
+    container_name: talent-rag-api
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-sentence-transformers/all-MiniLM-L6-v2}
+      CHROMA_DIR: /app/storage/chroma
+      COLLECTION_NAME: ${COLLECTION_NAME:-resume_entities}
+      TOP_K: ${TOP_K:-3}
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/app/storage
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+
+  ui:
+    build: .
+    container_name: talent-rag-ui
+    environment:
+      API_URL: http://api:8000
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-sentence-transformers/all-MiniLM-L6-v2}
+      CHROMA_DIR: /app/storage/chroma
+      COLLECTION_NAME: ${COLLECTION_NAME:-resume_entities}
+      TOP_K: ${TOP_K:-3}
+    command: ["uv", "run", "--no-dev", "streamlit", "run", "app/ui.py", "--server.address=0.0.0.0", "--server.port=8501"]
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  chroma_data:

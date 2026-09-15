@@ -1,0 +1,9 @@
+candidate_id,name,title,skills,experience,education,summary,gender
+C001,Amira Hassan,Junior Data Analyst,"SQL; Tableau; Excel; Python","1 year internship in reporting and dashboard development","BSc Computer Science","Built SQL queries and Tableau dashboards for weekly business reporting.",Female
+C002,Omar Adel,Data Analyst,"SQL; Power BI; Excel; Python","2 years as reporting analyst","BSc Information Systems","Automated reporting pipelines and created Power BI dashboards.",Male
+C003,Mariam Ali,Junior BI Analyst,"SQL; Tableau; Power BI; Excel","1 year BI internship","BSc Business Analytics","Created Tableau dashboards and analyzed sales data using SQL.",Female
+C004,Youssef Samir,Backend Developer,"Python; FastAPI; PostgreSQL; Docker","2 years backend development","BSc Computer Engineering","Developed REST APIs and database services.",Male
+C005,Nour Khaled,Data Intern,"Python; pandas; SQL; Excel","6 month data internship","BSc Statistics","Cleaned datasets and produced exploratory analysis reports.",Female
+C006,Karim Tarek,Junior Data Analyst,"SQL; Tableau; Python; Excel","1 year as junior analyst","BSc Economics","Prepared KPI dashboards and SQL-based analysis for stakeholders.",Male
+C007,Sara Mahmoud,ML Intern,"Python; scikit-learn; pandas; SQL","8 month machine learning internship","BSc Computer Science","Trained classification models and prepared feature datasets.",Female
+C008,Ahmed Fathy,Cloud Engineer,"AWS; Docker; Kubernetes; Python","2 years cloud engineering","BSc Computer Engineering","Built cloud infrastructure and deployment pipelines.",Male
